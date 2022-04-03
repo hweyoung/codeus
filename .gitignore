@@ -19,8 +19,8 @@ bin/
 
 ### IntelliJ IDEA ###
 **/JwtProperties.java
-*.properties
-*.yml
+#*.properties
+#*.yml
 .idea
 *.iws
 *.iml
