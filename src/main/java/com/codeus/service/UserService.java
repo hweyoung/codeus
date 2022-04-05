@@ -8,6 +8,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class UserService {
@@ -40,5 +42,12 @@ public class UserService {
     public void deleteUser(Long userSeq){
         User user = userRepository.findById(userSeq).orElseThrow(()->new IllegalArgumentException("user를 찾을 수 없습니다."));
         userRepository.delete(user);
+    }
+
+
+    @Transactional
+    public List<User> findAll(){//추가함
+        List<User> users  = userRepository.findAll();
+        return users;
     }
 }
