@@ -20,12 +20,14 @@ public class UserController {
     @GetMapping("/hello")
     public String hello(){
         return "hello";
+        
     }
 
     @GetMapping("/users") //추가함
     public List<User> retrieveAllUsers() {
         return userService.findAll();
     }
+
 
     @GetMapping("/{userSeq}")
     @ResponseBody
