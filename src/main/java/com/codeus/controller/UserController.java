@@ -8,6 +8,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 
 @RestController
 @RequestMapping("/user")
@@ -18,6 +20,11 @@ public class UserController {
     @GetMapping("/hello")
     public String hello(){
         return "hello";
+    }
+
+    @GetMapping("/users") //추가함
+    public List<User> retrieveAllUsers() {
+        return userService.findAll();
     }
 
     @GetMapping("/{userSeq}")
