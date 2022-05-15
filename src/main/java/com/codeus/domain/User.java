@@ -9,7 +9,7 @@ import javax.persistence.*;
 @Getter
 @NoArgsConstructor
 @Entity
-public class User {
+public class User extends BaseTimeEntity{
 
     //entity는 카멜케이스로 작성
 
@@ -18,32 +18,28 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long userSeq;
 
-//    @Column(nullable = false)
+    @Column(nullable = false)
     private String id;
-//    @Column(nullable = false)
+
+    @Column(nullable = false)
     private String pwd;
+
+    @Column(nullable = false)
+    private String question;
 
     @Column(name ="group_code")
     private String groupCode;
 
-    private String question;
-
     private String img;
 
-    @Column(name="cre_date")
-    private String creDate;
-
-    @Column(name = "reg_date")
-    private String regDate;
 
     @Builder
-    public User(String id, String pwd, String groupCode, String question, String img, String regDate) {
+    public User(String id, String pwd, String groupCode, String question, String img) {
         this.id = id;
         this.pwd = pwd;
         this.groupCode = groupCode;
         this.question = question;
         this.img = img;
-        this.regDate = regDate;
     }
 
     public void setId(String id) {
@@ -64,9 +60,5 @@ public class User {
 
     public void setImg(String img) {
         this.img = img;
-    }
-
-    public void setRegDate(String regDate) {
-        this.regDate = regDate;
     }
 }
