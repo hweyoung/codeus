@@ -14,6 +14,7 @@ public class User {
     //entity는 카멜케이스로 작성
 
     @Id
+    @Column(name = "user_seq")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long userSeq;
 
@@ -22,16 +23,27 @@ public class User {
 //    @Column(nullable = false)
     private String pwd;
 
-//    @Column(nullable = false)
-    private String refToken;
+    @Column(name ="group_code")
+    private String groupCode;
 
-    @ManyToOne
-    private Group_ group;
+    private String question;
+
+    private String img;
+
+    @Column(name="cre_date")
+    private String creDate;
+
+    @Column(name = "reg_date")
+    private String regDate;
 
     @Builder
-    public User(String id, String pwd){
+    public User(String id, String pwd, String groupCode, String question, String img, String regDate) {
         this.id = id;
         this.pwd = pwd;
+        this.groupCode = groupCode;
+        this.question = question;
+        this.img = img;
+        this.regDate = regDate;
     }
 
     public void setId(String id) {
@@ -42,7 +54,19 @@ public class User {
         this.pwd = pwd;
     }
 
-    public void setRefToken(String refToken) {
-        this.refToken = refToken;
+    public void setGroupCode(String groupCode) {
+        this.groupCode = groupCode;
+    }
+
+    public void setQuestion(String question) {
+        this.question = question;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
+    }
+
+    public void setRegDate(String regDate) {
+        this.regDate = regDate;
     }
 }

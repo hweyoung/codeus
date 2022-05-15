@@ -17,17 +17,22 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
 
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+	//password encoding을 위한 라이브러리 추가
+//	implementation 'org.springframework.boot:spring-boot-starter-security'
 
 	annotationProcessor('org.projectlombok:lombok')
-	testAnnotationProcessor('org.projectlombok:lombok')
 
 	implementation 'com.h2database:h2:1.4.200'
-
+	//SQL 실행 파라미터를 로그로 남긴다.
+	implementation 'com.github.gavlyukovskiy:p6spy-spring-boot-starter:1.5.6'
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 	compileOnly 'org.projectlombok:lombok'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 //	runtimeOnly 'mysql:mysql-connector-java'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	//jwt 라이브러리
+	implementation 'io.jsonwebtoken:jjwt:0.9.1'
+
 }
 
 tasks.named('test') {
