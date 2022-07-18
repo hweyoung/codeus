@@ -1,0 +1,20 @@
+WARN  22-05-31 00:10:13[HikariPool-1 housekeeper] [HikariPool:780] - HikariPool-1 - Retrograde clock change detected (housekeeper delta=29s786ms), soft-evicting connections from pool.
+INFO  22-05-31 00:12:17[SpringApplicationShutdownHook] [LocalContainerEntityManagerFactoryBean:651] - Closing JPA EntityManagerFactory for persistence unit 'default'
+INFO  22-05-31 00:12:17[SpringApplicationShutdownHook] [SchemaDropperImpl$DelayedDropActionImpl:538] - HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+INFO  22-05-31 00:12:17[SpringApplicationShutdownHook] [p6spy:60] - #1653923537753 | took 1ms | statement | connection 8| url jdbc:h2:file:~/codeus
+drop table if exists Group_ CASCADE 
+drop table if exists Group_ CASCADE ;
+INFO  22-05-31 00:12:17[SpringApplicationShutdownHook] [p6spy:60] - #1653923537754 | took 1ms | statement | connection 8| url jdbc:h2:file:~/codeus
+drop table if exists Group__users CASCADE 
+drop table if exists Group__users CASCADE ;
+INFO  22-05-31 00:12:17[SpringApplicationShutdownHook] [p6spy:60] - #1653923537755 | took 0ms | statement | connection 8| url jdbc:h2:file:~/codeus
+drop table if exists Post CASCADE 
+drop table if exists Post CASCADE ;
+INFO  22-05-31 00:12:17[SpringApplicationShutdownHook] [p6spy:60] - #1653923537756 | took 1ms | statement | connection 8| url jdbc:h2:file:~/codeus
+drop table if exists User CASCADE 
+drop table if exists User CASCADE ;
+INFO  22-05-31 00:12:17[SpringApplicationShutdownHook] [p6spy:60] - #1653923537758 | took 1ms | statement | connection 8| url jdbc:h2:file:~/codeus
+drop sequence if exists hibernate_sequence
+drop sequence if exists hibernate_sequence;
+INFO  22-05-31 00:12:17[SpringApplicationShutdownHook] [HikariDataSource:350] - HikariPool-1 - Shutdown initiated...
+INFO  22-05-31 00:12:17[SpringApplicationShutdownHook] [HikariDataSource:352] - HikariPool-1 - Shutdown completed.

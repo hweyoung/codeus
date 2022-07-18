@@ -1,8 +1,6 @@
 package com.codeus.service;
 
 import com.codeus.domain.Post;
-import com.codeus.domain.User;
-import com.codeus.dto.request.CreateUser;
 import com.codeus.repository.PostRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

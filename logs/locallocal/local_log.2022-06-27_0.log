@@ -1,0 +1,85 @@
+INFO  22-06-27 21:18:03[restartedMain] [CodeusApplication:55] - Starting CodeusApplication using Java 11.0.12 on hweyoungui-MacBookAir.local with PID 26282 (/Users/hweyoung/Desktop/backend/codeus/codeus/out/production/classes started by hweyoung in /Users/hweyoung/Desktop/backend/codeus/codeus)
+INFO  22-06-27 21:18:03[restartedMain] [CodeusApplication:640] - No active profile set, falling back to 1 default profile: "default"
+INFO  22-06-27 21:18:03[restartedMain] [DevToolsPropertyDefaultsPostProcessor:255] - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+INFO  22-06-27 21:18:03[restartedMain] [DevToolsPropertyDefaultsPostProcessor:255] - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+INFO  22-06-27 21:18:04[restartedMain] [RepositoryConfigurationDelegate:132] - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+INFO  22-06-27 21:18:04[restartedMain] [RepositoryConfigurationDelegate:201] - Finished Spring Data repository scanning in 51 ms. Found 3 JPA repository interfaces.
+INFO  22-06-27 21:18:05[restartedMain] [TomcatWebServer:108] - Tomcat initialized with port(s): 8080 (http)
+INFO  22-06-27 21:18:05[restartedMain] [Http11NioProtocol:173] - Initializing ProtocolHandler ["http-nio-8080"]
+INFO  22-06-27 21:18:05[restartedMain] [StandardService:173] - Starting service [Tomcat]
+INFO  22-06-27 21:18:05[restartedMain] [StandardEngine:173] - Starting Servlet engine: [Apache Tomcat/9.0.60]
+INFO  22-06-27 21:18:05[restartedMain] [[/]:173] - Initializing Spring embedded WebApplicationContext
+INFO  22-06-27 21:18:05[restartedMain] [ServletWebServerApplicationContext:290] - Root WebApplicationContext: initialization completed in 1624 ms
+INFO  22-06-27 21:18:05[restartedMain] [HikariDataSource:110] - HikariPool-1 - Starting...
+INFO  22-06-27 21:18:07[restartedMain] [HikariDataSource:123] - HikariPool-1 - Start completed.
+INFO  22-06-27 21:18:07[restartedMain] [H2ConsoleAutoConfiguration:89] - H2 console available at '/h2_db'. Database available at 'jdbc:h2:file:~/codeus'
+INFO  22-06-27 21:18:07[restartedMain] [LogHelper:31] - HHH000204: Processing PersistenceUnitInfo [name: default]
+INFO  22-06-27 21:18:07[restartedMain] [Version:44] - HHH000412: Hibernate ORM core version 5.6.7.Final
+INFO  22-06-27 21:18:07[restartedMain] [Version:56] - HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+INFO  22-06-27 21:18:08[restartedMain] [Dialect:175] - HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+INFO  22-06-27 21:18:08[restartedMain] [p6spy:60] - #1656332288421 | took 0ms | statement | connection 2| url jdbc:h2:file:~/codeus
+drop table if exists Group_ CASCADE 
+drop table if exists Group_ CASCADE ;
+INFO  22-06-27 21:18:08[restartedMain] [p6spy:60] - #1656332288422 | took 0ms | statement | connection 2| url jdbc:h2:file:~/codeus
+drop table if exists Group__users CASCADE 
+drop table if exists Group__users CASCADE ;
+INFO  22-06-27 21:18:08[restartedMain] [p6spy:60] - #1656332288422 | took 0ms | statement | connection 2| url jdbc:h2:file:~/codeus
+drop table if exists Post CASCADE 
+drop table if exists Post CASCADE ;
+INFO  22-06-27 21:18:08[restartedMain] [p6spy:60] - #1656332288422 | took 0ms | statement | connection 2| url jdbc:h2:file:~/codeus
+drop table if exists User CASCADE 
+drop table if exists User CASCADE ;
+INFO  22-06-27 21:18:08[restartedMain] [p6spy:60] - #1656332288423 | took 0ms | statement | connection 2| url jdbc:h2:file:~/codeus
+drop sequence if exists hibernate_sequence
+drop sequence if exists hibernate_sequence;
+INFO  22-06-27 21:18:08[restartedMain] [p6spy:60] - #1656332288425 | took 1ms | statement | connection 3| url jdbc:h2:file:~/codeus
+create sequence hibernate_sequence start with 1 increment by 1
+create sequence hibernate_sequence start with 1 increment by 1;
+INFO  22-06-27 21:18:08[restartedMain] [p6spy:60] - #1656332288426 | took 0ms | statement | connection 3| url jdbc:h2:file:~/codeus
+create table Group_ (groupSeq bigint not null, name varchar(255), primary key (groupSeq))
+create table Group_ (groupSeq bigint not null, name varchar(255), primary key (groupSeq));
+INFO  22-06-27 21:18:08[restartedMain] [p6spy:60] - #1656332288427 | took 0ms | statement | connection 3| url jdbc:h2:file:~/codeus
+create table Group__users (Group__groupSeq bigint not null, users_user_seq bigint not null)
+create table Group__users (Group__groupSeq bigint not null, users_user_seq bigint not null);
+INFO  22-06-27 21:18:08[restartedMain] [p6spy:60] - #1656332288429 | took 2ms | statement | connection 3| url jdbc:h2:file:~/codeus
+create table Post (postSeq bigint not null, code varchar(255), comment varchar(255), groupSeq bigint, qListName varchar(255), qListid bigint, stack varchar(255), userid varchar(255), week bigint, primary key (postSeq))
+create table Post (postSeq bigint not null, code varchar(255), comment varchar(255), groupSeq bigint, qListName varchar(255), qListid bigint, stack varchar(255), userid varchar(255), week bigint, primary key (postSeq));
+INFO  22-06-27 21:18:08[restartedMain] [p6spy:60] - #1656332288431 | took 1ms | statement | connection 3| url jdbc:h2:file:~/codeus
+create table User (user_seq bigint generated by default as identity, createdAt timestamp, updatedAt timestamp, group_code varchar(255), id varchar(255) not null, img varchar(255), pwd varchar(255) not null, question varchar(255) not null, primary key (user_seq))
+create table User (user_seq bigint generated by default as identity, createdAt timestamp, updatedAt timestamp, group_code varchar(255), id varchar(255) not null, img varchar(255), pwd varchar(255) not null, question varchar(255) not null, primary key (user_seq));
+INFO  22-06-27 21:18:08[restartedMain] [p6spy:60] - #1656332288433 | took 1ms | statement | connection 3| url jdbc:h2:file:~/codeus
+alter table Group__users add constraint UK_592mq8c74jrty5gejaxslwdku unique (users_user_seq)
+alter table Group__users add constraint UK_592mq8c74jrty5gejaxslwdku unique (users_user_seq);
+INFO  22-06-27 21:18:08[restartedMain] [p6spy:60] - #1656332288442 | took 8ms | statement | connection 3| url jdbc:h2:file:~/codeus
+alter table Group__users add constraint FK9ydl1ps2ad41hficq3v3q69ht foreign key (users_user_seq) references User
+alter table Group__users add constraint FK9ydl1ps2ad41hficq3v3q69ht foreign key (users_user_seq) references User;
+INFO  22-06-27 21:18:08[restartedMain] [p6spy:60] - #1656332288446 | took 3ms | statement | connection 3| url jdbc:h2:file:~/codeus
+alter table Group__users add constraint FKjwn6jag7tnn9os8j7e2hspshy foreign key (Group__groupSeq) references Group_
+alter table Group__users add constraint FKjwn6jag7tnn9os8j7e2hspshy foreign key (Group__groupSeq) references Group_;
+INFO  22-06-27 21:18:08[restartedMain] [JtaPlatformInitiator:52] - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+INFO  22-06-27 21:18:08[restartedMain] [LocalContainerEntityManagerFactoryBean:437] - Initialized JPA EntityManagerFactory for persistence unit 'default'
+WARN  22-06-27 21:18:08[restartedMain] [JpaBaseConfiguration$JpaWebConfiguration:219] - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+WARN  22-06-27 21:18:09[restartedMain] [ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration:104] - Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+INFO  22-06-27 21:18:09[restartedMain] [OptionalLiveReloadServer:58] - LiveReload server is running on port 35729
+INFO  22-06-27 21:18:09[restartedMain] [Http11NioProtocol:173] - Starting ProtocolHandler ["http-nio-8080"]
+INFO  22-06-27 21:18:09[restartedMain] [TomcatWebServer:220] - Tomcat started on port(s): 8080 (http) with context path ''
+INFO  22-06-27 21:18:09[restartedMain] [CodeusApplication:61] - Started CodeusApplication in 6.294 seconds (JVM running for 7.145)
+INFO  22-06-27 21:18:46[SpringApplicationShutdownHook] [LocalContainerEntityManagerFactoryBean:651] - Closing JPA EntityManagerFactory for persistence unit 'default'
+INFO  22-06-27 21:18:46[SpringApplicationShutdownHook] [SchemaDropperImpl$DelayedDropActionImpl:538] - HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+INFO  22-06-27 21:18:46[SpringApplicationShutdownHook] [p6spy:60] - #1656332326170 | took 2ms | statement | connection 4| url jdbc:h2:file:~/codeus
+drop table if exists Group_ CASCADE 
+drop table if exists Group_ CASCADE ;
+INFO  22-06-27 21:18:46[SpringApplicationShutdownHook] [p6spy:60] - #1656332326171 | took 0ms | statement | connection 4| url jdbc:h2:file:~/codeus
+drop table if exists Group__users CASCADE 
+drop table if exists Group__users CASCADE ;
+INFO  22-06-27 21:18:46[SpringApplicationShutdownHook] [p6spy:60] - #1656332326171 | took 0ms | statement | connection 4| url jdbc:h2:file:~/codeus
+drop table if exists Post CASCADE 
+drop table if exists Post CASCADE ;
+INFO  22-06-27 21:18:46[SpringApplicationShutdownHook] [p6spy:60] - #1656332326174 | took 2ms | statement | connection 4| url jdbc:h2:file:~/codeus
+drop table if exists User CASCADE 
+drop table if exists User CASCADE ;
+INFO  22-06-27 21:18:46[SpringApplicationShutdownHook] [p6spy:60] - #1656332326175 | took 1ms | statement | connection 4| url jdbc:h2:file:~/codeus
+drop sequence if exists hibernate_sequence
+drop sequence if exists hibernate_sequence;
+INFO  22-06-27 21:18:46[SpringApplicationShutdownHook] [HikariDataSource:350] - HikariPool-1 - Shutdown initiated...
+INFO  22-06-27 21:18:46[SpringApplicationShutdownHook] [HikariDataSource:352] - HikariPool-1 - Shutdown completed.
