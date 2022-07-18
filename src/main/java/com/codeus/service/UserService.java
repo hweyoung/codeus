@@ -33,8 +33,9 @@ public class UserService {
 
 
     @Transactional
-    public GetUserResponse getUser(){
-        String userId = jwtTokenService.getIdByToken();
+    public GetUserResponse getUser(String userId){
+        String getUserId = jwtTokenService.getIdByToken();
+        if(!getUserId.equals(userId))throw new BadRequestException("userId 불일치");
         User user = userRepository.findById(userId).orElseThrow(()->new NotFoundException("id를 찾을 수 없음"));
         return new GetUserResponse(user.getId(),user.getImg());
     }
@@ -111,8 +112,10 @@ public class UserService {
 
     }
 
-    public Long checkId(String id) {
-        return userRepository.countById(id).orElseThrow(()-> new GlobalException("sql Exception"));
+    public Long checkId(String userId) {
+        Long checkId = userRepository.countById(userId).orElseThrow(()-> new GlobalException("sql Exception"));
+        System.out.println(checkId);
+        return checkId;
     }
 
 

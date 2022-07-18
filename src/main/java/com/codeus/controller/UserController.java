@@ -40,14 +40,14 @@ public class UserController {
         return ResponseEntity.ok(userService.findAll());
     }
 
-    @GetMapping("")
+    @GetMapping("/{userId}")
     @ResponseBody
-    public ResponseEntity<JsonResponse> getUser(){
-        GetUserResponse response = userService.getUser();
+    public ResponseEntity<JsonResponse> getUser(@PathVariable String userId){
+        GetUserResponse response = userService.getUser(userId);
         return ResponseEntity.ok(new JsonResponse("getUser","success",response));
     }
 
-    @PostMapping("/changePwd")
+    @PutMapping("/changePwd")
     public ResponseEntity<JsonResponse> changePwd(@RequestBody ChangePwd changePwd){
         String token = userService.changePwd(changePwd);
         return ResponseEntity.ok(new JsonResponse("changePwd","success",token));
@@ -76,7 +76,7 @@ public class UserController {
     @PostMapping("/checkId")
     public ResponseEntity<JsonResponse> checkId(@RequestBody CheckId checkId){
         Long countId = userService.checkId(checkId.getId());
-        return ResponseEntity.ok(new JsonResponse("checkId","success",countId));
+        return ResponseEntity.ok(new JsonResponse("checkId","success", countId));
     }
 
     @PostMapping("/login")
