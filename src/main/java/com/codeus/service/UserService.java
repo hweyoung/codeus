@@ -9,7 +9,7 @@ import com.codeus.domain.User;
 import com.codeus.dto.user.request.ChangePwd;
 import com.codeus.dto.user.request.CreateUser;
 import com.codeus.dto.user.request.LoginUser;
-import com.codeus.dto.user.request.UpdatePwd;
+import com.codeus.dto.user.request.UpdateUser;
 import com.codeus.dto.user.response.GetUserResponse;
 import com.codeus.dto.user.response.LoginUserResponse;
 import com.codeus.repository.UserRepository;
@@ -33,8 +33,9 @@ public class UserService {
 
 
     @Transactional
-    public GetUserResponse getUser(){
-        String userId = jwtTokenService.getIdByToken();
+    public GetUserResponse getUser(String userId){
+        String getUserId = jwtTokenService.getIdByToken();
+        if(!getUserId.equals(userId))throw new BadRequestException("userId 불일치");
         User user = userRepository.findById(userId).orElseThrow(()->new NotFoundException("id를 찾을 수 없음"));
         return new GetUserResponse(user.getId(),user.getImg());
     }
@@ -54,28 +55,20 @@ public class UserService {
     }
 
     @Transactional
-    public User updatePwd(String userId, UpdatePwd updatePwd){
+    public User updateUser(String userId, UpdateUser updateUser){
         String id = jwtTokenService.getIdByToken();
 
         if(!userId.equals(id))throw new MethodNotAllowException("잘못된 경로 요청");
 
         User user = userRepository.findById(id).orElseThrow(()->new NotFoundException("id를 찾을 수 없음"));
-        user.setId(userId);
 
-        if(updatePwd.getNewPwd()==null&&updatePwd.getPwd()==null) throw new MethodNotAllowException("잘못된 요청");
+        if(updateUser.getPwd()!=null&&updateUser.getPwd()!="")user.setPwd(updateUser.getPwd());
+        if(updateUser.getQuestion()!=null&&updateUser.getQuestion()!="")user.setQuestion(updateUser.getQuestion());
 
-        String oldPwd = SHA256.encrypt(updatePwd.getPwd());
-        String newPwd = SHA256.encrypt(updatePwd.getNewPwd());
-
-        if(user.getPwd().equals(oldPwd)){
-            user.setPwd(newPwd);
-            userRepository.save(user);
-            return user;
-        }else{
-            throw new BadRequestException("비밀번호가 일치하지 않음");
-        }
-
+        userRepository.save(user);
+        return user;
     }
+
     public User updateUserImg(String userId, MultipartHttpServletRequest file) throws IOException {
         String id = jwtTokenService.getIdByToken();
         if(!userId.equals(id))throw new MethodNotAllowException("잘못된 경로 요청");
@@ -111,8 +104,10 @@ public class UserService {
 
     }
 
-    public Long checkId(String id) {
-        return userRepository.countById(id).orElseThrow(()-> new GlobalException("sql Exception"));
+    public Long checkId(String userId) {
+        Long checkId = userRepository.countById(userId).orElseThrow(()-> new GlobalException("sql Exception"));
+        System.out.println(checkId);
+        return checkId;
     }
 
 

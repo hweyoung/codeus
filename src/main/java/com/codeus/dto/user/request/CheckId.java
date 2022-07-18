@@ -4,5 +4,5 @@ import lombok.Getter;
 
 @Getter
 public class CheckId {
-    private String Id;
+    private String id;
 }
