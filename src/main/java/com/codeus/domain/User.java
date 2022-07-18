@@ -54,6 +54,10 @@ public class User extends BaseTimeEntity{
         this.groupCode = groupCode;
     }
 
+    public void setQuestion(String question) {
+        this.question = question;
+    }
+
     public void setImg(String img) {
         this.img = img;
     }

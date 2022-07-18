@@ -5,7 +5,8 @@ import lombok.*;
 
 @Getter
 @NoArgsConstructor
-public class UpdatePwd {
+//pwd, group,
+public class UpdateUser {
     private String pwd;
-    private String newPwd;
+    private String question;
 }

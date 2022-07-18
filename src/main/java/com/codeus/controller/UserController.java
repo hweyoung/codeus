@@ -3,6 +3,7 @@ package com.codeus.controller;
 import com.codeus.domain.User;
 import com.codeus.dto.JsonResponse;
 import com.codeus.dto.user.request.*;
+import com.codeus.dto.user.response.ChangePwdResponse;
 import com.codeus.dto.user.response.GetUserResponse;
 import com.codeus.dto.user.response.LoginUserResponse;
 import com.codeus.service.UserService;
@@ -47,15 +48,17 @@ public class UserController {
         return ResponseEntity.ok(new JsonResponse("getUser","success",response));
     }
 
-    @PutMapping("/changePwd")
+    @PostMapping("/changePwd")
     public ResponseEntity<JsonResponse> changePwd(@RequestBody ChangePwd changePwd){
         String token = userService.changePwd(changePwd);
-        return ResponseEntity.ok(new JsonResponse("changePwd","success",token));
+        ChangePwdResponse response = new ChangePwdResponse(changePwd.getId(), token);
+        return ResponseEntity.ok(new JsonResponse("changePwd","success", response));
     }
 
+    //password, question
     @PutMapping ("/{userId}")
-    public ResponseEntity<JsonResponse> updatePwd(@PathVariable String userId,@RequestBody UpdatePwd updatePwd)throws IOException {
-        userService.updatePwd(userId, updatePwd);
+    public ResponseEntity<JsonResponse> updateUser(@PathVariable String userId,@RequestBody UpdateUser updateUser)throws IOException {
+        userService.updateUser(userId, updateUser);
         return ResponseEntity.ok(new JsonResponse("updatePwd","success",null));
     }
 
